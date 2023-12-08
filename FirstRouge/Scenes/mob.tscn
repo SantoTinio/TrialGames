@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://u6126u0yqcmn"]
+
+[ext_resource type="Script" path="res://Scripts/Mob.gd" id="1_00imy"]
+[ext_resource type="Texture2D" uid="uid://cx25jivtgicx1" path="res://Assets/art/enemyFlyingAlt_1.png" id="2_tjrdn"]
+[ext_resource type="Texture2D" uid="uid://bt6cm04e0bk0k" path="res://Assets/art/enemyFlyingAlt_2.png" id="3_eh46p"]
+[ext_resource type="Texture2D" uid="uid://dy83uoamvi5ae" path="res://Assets/art/enemySwimming_1.png" id="4_oodkr"]
+[ext_resource type="Texture2D" uid="uid://df6uinepdpawy" path="res://Assets/art/enemySwimming_2.png" id="5_ok3gq"]
+[ext_resource type="Texture2D" uid="uid://dig5oeeq7vd1n" path="res://Assets/art/enemyWalking_1.png" id="6_4ln0v"]
+[ext_resource type="Texture2D" uid="uid://douv527vh3g0o" path="res://Assets/art/enemyWalking_2.png" id="7_mahe5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lx23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tjrdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eh46p")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oodkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ok3gq")
+}],
+"loop": true,
+"name": &"Swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4ln0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mahe5")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4t8y8"]
+radius = 36.0004
+height = 93.9992
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_00imy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.999999, 0)
+scale = Vector2(0.708333, 0.75)
+sprite_frames = SubResource("SpriteFrames_3lx23")
+animation = &"Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+rotation = 1.57038
+shape = SubResource("CapsuleShape2D_4t8y8")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-8, 0)
+enable_node_path = NodePath("../CollisionShape2D")
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
