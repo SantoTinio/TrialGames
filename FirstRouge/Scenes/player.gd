@@ -1,4 +1,5 @@
-extends Area2D
+extends Area2D 
+signal hit
 
 @export var speed = 400 #speed of the player
 var screen_size # Game window
@@ -6,6 +7,7 @@ var screen_size # Game window
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,3 +31,24 @@ func _process(delta):
 		#same as get_node("$AnimatedSprite2D").stop()
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	if velocity.x != 0:
+		get_node("AnimatedSprite2D").animation = "walk"
+		$AnimatedSprite2D.flip_v = false
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	elif velocity.y !=0:
+		get_node("AnimatedSprite2D").animation = "up"
+		$AnimatedSprite2D.flip_v = velocity.y > 0
+
+
+func _on_body_entered(body):
+	hide() #Player ddisappears when hit (Invisible Frame)
+	hit.emit()
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
+	
