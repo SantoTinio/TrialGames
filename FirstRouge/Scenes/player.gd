@@ -7,7 +7,7 @@ var screen_size # Game window
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-
+	#hide() -> was commented out for debugging purposes
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
