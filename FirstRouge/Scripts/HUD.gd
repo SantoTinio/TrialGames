@@ -1,7 +1,6 @@
-extends Node
+extends CanvasLayer
 
-@export var mob_scene: PackedScene
-var score
+signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
