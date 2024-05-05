@@ -1,0 +1,17 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1714658569
+icon.svg::CompressedTexture2D::6181044320130667765::1709095442::1709095453::1::::<><>::
+::res://Asset/::1709187242
+Basic Charakter Spritesheet.png::CompressedTexture2D::8432533107431320327::1709108980::1709109078::1::::<><>::
+Grass.png::CompressedTexture2D::6855853780332723777::1709108980::1709187242::1::::<><>::
+Hills.png::CompressedTexture2D::3619822151999969447::1709108980::1709187242::1::::<><>::
+Tilled_Dirt.png::CompressedTexture2D::8939253115566839312::1709108980::1709187242::1::::<><>::
+Water.png::CompressedTexture2D::7147459554848387941::1709108980::1709187242::1::::<><>::
+::res://Scenes/::1709189270
+::res://Scenes/Character/::1714218500
+character_body.gd::GDScript::-1::1709285871::0::1::::<>CharacterBody2D<>::
+character_body.tscn::PackedScene::2773632659944201706::1714218500::0::1::::<><>::res://Scenes/Character/character_body.gd
+::res://Scenes/Levels/::1714218500
+game_level.gd::GDScript::-1::1709802267::0::1::::<>Node2D<>::
+game_level.tscn::PackedScene::1517647386626476931::1714218500::0::1::::<><>::uid://bfrtlblc4o267::::res://Scenes/Character/character_body.tscn<>res://Scenes/Levels/game_level.gd<>uid://c4xa57c63ipbd::::res://Asset/Grass.png<>uid://brtp7a6u4im6j::::res://Asset/Hills.png<>uid://c83ju5qxnro1b::::res://Asset/Water.png
+::res://Scenes/Map/::1709191993
